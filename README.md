@@ -1,14 +1,14 @@
 # detail-subsection
 
-A Polymer Element showing a detail subsection of a given field.
+A Polymer Element showing a subsection with optional header, extractions, detail, or link.
 
 ### Example
 ```html
 <detail-subsection
-  entity-id="[[offer.id]]"
-  classification-manager="[[classificationManager]]"
-  icon-style-class-property="styleClass"
-  extractions="[[offer.extraction]]">
+  header="Section Title"
+  entity-id="1234"
+  extractions="[[extractions]]"
+  detail="The quick brown fox jumped over the lazy dog.">
 </detail-subsection>
 ```
 

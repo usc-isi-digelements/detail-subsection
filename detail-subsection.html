@@ -14,22 +14,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/icon-label/icon-label.html">
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../../bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../icon-label/icon-label.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-scroll-threshold/iron-scroll-threshold.html">
+<link rel="import" href="../tag-extraction-buttons/tag-extraction-buttons.html">
 
 <!--
-A Polymer Element showing a detail subsection of a given field.
+A Polymer Element showing a subsection with optional header, extractions, detail, or link.
+
 ### Example
 ```html
 <detail-subsection
-  entity-id="[[offer.id]]"
-  classification-manager="[[classificationManager]]"
-  icon-style-class-property="styleClass"
-  extractions="[[offer.extraction]]">
+  header="Section Title"
+  entity-id="1234"
+  extractions="[[extractions]]"
+  detail="The quick brown fox jumped over the lazy dog.">
 </detail-subsection>
 ```
+
 @demo demo/index.html
 -->
 
@@ -120,13 +123,13 @@ A Polymer Element showing a detail subsection of a given field.
               text="[[_getProperty(extraction, textProperty)]]">
             </icon-label>
 
-            <template is="dom-if" if="[[classificationManager]]">
-              <classify-extraction-buttons
-                classification-manager="[[classificationManager]]"
-                classifications="{{_getProperty(extraction, classificationsProperty)}}"
+            <template is="dom-if" if="[[tagManager]]">
+              <tag-extraction-buttons
+                classification="[[_getProperty(extraction, classificationsProperty)]]"
                 entity-id="[[entityId]]"
-                extraction-id="[[_getProperty(extraction, idProperty)]]">
-              </classify-extraction-buttons>
+                extraction-id="[[_getProperty(extraction, idProperty)]]"
+                tag-manager="[[tagManager]]">
+              </tag-extraction-buttons>
             </template>
           </div>
         </template>
@@ -314,11 +317,11 @@ A Polymer Element showing a detail subsection of a given field.
         /**
          * (Optional)
          *
-         * The classification manager.
+         * The tag manager.
          *
          * @param {Object}
          */
-        classificationManager: {
+        tagManager: {
           type: Object
         }
       },

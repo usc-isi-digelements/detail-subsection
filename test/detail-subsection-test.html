@@ -57,7 +57,7 @@ limitations under the License.
       expect(element.extractions).to.deep.equal([]);
       expect(element.detail).to.equal('');
       expect(element.link).to.equal('');
-      expect(element.classificationManager).to.not.exist;
+      expect(element.tagManager).to.not.exist;
     });
 
     test('does not have header element', function() {
@@ -123,7 +123,7 @@ limitations under the License.
         type: 'myType'
       }]);
       expect(element.detail).to.equal('myDetail');
-      expect(element.classificationManager).to.not.exist;
+      expect(element.tagManager).to.not.exist;
     });
 
     test('does have header element', function() {
@@ -145,7 +145,7 @@ limitations under the License.
       expect(element.$$('.extraction icon-label').iconStyleClass).to.equal('myIconStyleClass');
       expect(element.$$('.extraction icon-label').link).to.equal('myLink');
       expect(element.$$('.extraction icon-label').text).to.equal('myText');
-      expect(element.$$('.extraction classify-extraction-buttons')).to.not.exist;
+      expect(element.$$('.extraction tag-extraction-buttons')).to.not.exist;
     });
 
     test('does have detail element', function() {
@@ -167,16 +167,21 @@ limitations under the License.
       });
     });
 
-    test('does have classify-extraction-buttons element if classificationManager is defined', function(done) {
-      element.classificationManager = {};
+    test('does have tag-extraction-buttons element if tagManager is defined', function(done) {
+      element.tagManager = {
+        addListener: function() {},
+        removeListener: function() {},
+        setExtractionTag: function() {}
+      };
+
       flush(function() {
-        expect(element.$$('.extraction classify-extraction-buttons')).to.exist;
-        expect(element.$$('.extraction classify-extraction-buttons').classificationManager).to.exist;
-        expect(element.$$('.extraction classify-extraction-buttons').classifications).to.deep.equal({
+        expect(element.$$('.extraction tag-extraction-buttons')).to.exist;
+        expect(element.$$('.extraction tag-extraction-buttons').tagManager).to.exist;
+        expect(element.$$('.extraction tag-extraction-buttons').classification).to.deep.equal({
           user: 'positive'
         });
-        expect(element.$$('.extraction classify-extraction-buttons').entityId).to.equal('myEntity');
-        expect(element.$$('.extraction classify-extraction-buttons').extractionId).to.equal('myId');
+        expect(element.$$('.extraction tag-extraction-buttons').entityId).to.equal('myEntity');
+        expect(element.$$('.extraction tag-extraction-buttons').extractionId).to.equal('myId');
         done();
       });
     });
