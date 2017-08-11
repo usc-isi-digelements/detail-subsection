@@ -1,7 +1,7 @@
 {
   "name": "detail-subsection",
   "description": "A Polymer Element showing a subsection with optional header, extractions, detail, or link.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": [
