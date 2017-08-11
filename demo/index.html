@@ -22,7 +22,18 @@ limitations under the License.
 
 <body unresolved>
   <template is="dom-bind" id="demo">
-    <detail-subsection>
+    <detail-subsection
+      header="Section Title"
+      entity-id="1234"
+      extractions="[[extractions]]"
+      detail="The quick brown fox jumped over the lazy dog.">
     </detail-subsection>
   </template>
+
+  <script>
+    (function(document) {
+      var demo = document.querySelector('#demo');
+      demo.extractions = [{text: 'extraction 1'}, {text: 'extraction 2'}, {text: 'extraction 3'}];
+    })(document);
+  </script>
 </body>
