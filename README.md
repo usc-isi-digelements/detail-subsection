@@ -12,6 +12,15 @@ A Polymer Element showing a subsection with optional header, extractions, detail
 </detail-subsection>
 ```
 
+### Styling
+
+`<detail-subsection>` provides the following custom properties and mixins for styling:
+
+Custom property          | Description                      | Default
+-------------------------|----------------------------------|--------
+`--primary-text-color`   | The color of the icons and text. | --primary-text-color
+`--secondary-text-color` | The hover color of the links.    | --secondary-text-color
+
 ### Dependencies
 
 Dependencies are installed using [Bower](http://bower.io/):

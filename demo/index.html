@@ -16,13 +16,93 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="../detail-subsection.html">
 </head>
 
 <body unresolved>
-  <template is="dom-bind" id="demo">
-    <detail-subsection>
-    </detail-subsection>
-  </template>
+  <dom-bind id="demo">
+    <template is="dom-bind">
+      <p>Detail: The quick brown fox jumped over the lazy dog.</p>
+      <p>Entity ID: 1234</p>
+      <p>Header: Section Title</p>
+      <template is="dom-if" if="[[stringify]]">
+        <p>Extractions: [[stringify(extractions)]]</p>
+      </template>
+      <p>Detail Subsection:</p>
+
+      <detail-subsection
+        header="Section Title"
+        entity-id="1234"
+        extractions="[[extractions]]"
+        detail="The quick brown fox jumped over the lazy dog.">
+      </detail-subsection>
+    </template>
+  </dom-bind>
+
+  <script>
+    (function(document) {
+      var demo = document.querySelector('dom-bind');
+
+      demo.extractions = [{
+        classifications: {
+          database: 'positive',
+          type: 'type',
+          user: ''
+        },
+        confidence: 100,
+        icon: 'link',
+        id: 'ID1',
+        link: 'https://www.nextcentury.com/',
+        provenances: [{
+          method: 'From Page Header',
+          text: 'Welcome to <etk>Next Century</etk>'
+        }],
+        styleClass: 'extraction-nextcentury',
+        text: 'Home Page'
+      }, {
+        classifications: {
+          database: 'negative',
+          type: 'type',
+          user: ''
+        },
+        confidence: 33,
+        highlight: true,
+        icon: 'search',
+        id: 'ID2',
+        link: 'https://github.com/DigElements',
+        provenances: [{
+          method: 'From Page Body',
+          text: 'The <etk>DigElements</etk> Library'
+        }],
+        styleClass: 'extraction-nextcentury',
+        text: 'DigElements'
+      }, {
+        classifications: {
+          database: '',
+          type: 'type',
+          user: ''
+        },
+        confidence: 99,
+        icon: 'android',
+        id: 'ID3',
+        link: 'https://www.android.com/',
+        provenances: [],
+        styleClass: 'extraction-google',
+        text: 'Android'
+      }, {
+        classifications: {},
+        confidence: 66,
+        icon: 'polymer',
+        link: 'https://www.polymer-project.org/',
+        provenances: [],
+        styleClass: 'extraction-google',
+        text: 'Polymer Project'
+      }];
+
+      demo.stringify = function(object) {
+        return JSON.stringify(object);
+      };
+    })(document);
+  </script>
 </body>
