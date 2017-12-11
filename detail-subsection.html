@@ -88,10 +88,14 @@ Custom property          | Description                      | Default
       }
 
       .extraction {
-        display: -webkit-box;
         font-size: 14px;
-        height: 20px;
+        line-height: 20px;
         margin: 5px;
+        max-height: 20px;
+        min-height: 20px;
+
+        /* Needed to fix flexbox layout issues in newer browsers. */
+        display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
@@ -104,7 +108,7 @@ Custom property          | Description                      | Default
         font-size: 14px;
         line-height: 20px;
         margin: 5px;
-        word-break: break-word;
+        word-break: break-all;
         word-wrap: break-word;
       }
     </style>
