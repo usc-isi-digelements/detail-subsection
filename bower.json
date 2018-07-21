@@ -9,18 +9,18 @@
     "polymer"
   ],
   "main": "detail-subsection.html",
-  "homepage": "https://github.com/DigElements/detail-subsection/",
+  "homepage": "https://github.com/usc-isi-digelements/detail-subsection/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "icon-label": "DigElements/icon-label#2.1.7",
+    "icon-label": "usc-isi-digelements/icon-label#2.1.7",
     "iron-scroll-threshold": "PolymerElements/iron-scroll-threshold#^2.0.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "paper-styles": "PolymerElements/paper-styles#2.0.0",
-    "tag-extraction-buttons": "DigElements/tag-extraction-buttons#2.0.2"
+    "tag-extraction-buttons": "usc-isi-digelements/tag-extraction-buttons#2.0.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
